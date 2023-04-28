@@ -1,7 +1,7 @@
 module Test.Main where
 
 import Prelude
-import Test.MySolutions (findEntryByStreet)
+import Test.MySolutions (findEntryByStreet, isInBook, removeDuplicates)
 import Data.AddressBook (AddressBook, Entry, emptyBook, findEntry, insertEntry)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
@@ -66,7 +66,6 @@ main =
       test "Lookup missing" do
         Assert.equal Nothing
           $ findEntryByStreet "456 Nothing St." book
-{-  Move this block comment starting point to enable more tests
     suite "Exercise - isInBook" do
       test "Check existing" do
         Assert.equal true
@@ -78,7 +77,6 @@ main =
       Assert.equal book
         $ removeDuplicates bookWithDuplicate
 
--}
 runChapterExamples :: TestSuite
 runChapterExamples = do
   test "Todo for book maintainers - Add tests for chapter examples" do

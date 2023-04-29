@@ -160,7 +160,7 @@ main =
         test "Verify 44" do
           Assert.equal 701408733
             $ fibTailRec 44
-{-  Move this block comment starting point to enable more tests
+
       suite "Exercise - reverse" do
         test "Empty Array" do
           Assert.equal ([] :: Array Int)
@@ -171,6 +171,7 @@ main =
         test "More than 1 element" do
           Assert.equal [ 3, 2, 1 ]
             $ reverse [ 1, 2, 3 ]
+
     suite "Exercise Group - Filesystem" do
       test "Exercise - onlyFiles" do
         Assert.equal
@@ -184,6 +185,7 @@ main =
           ]
           $ map filename
           $ onlyFiles root
+{-  Move this block comment starting point to enable more tests
       suite "Exercise - whereIs" do
         test "locates a file"
           $ Assert.equal (Just ("/bin/"))

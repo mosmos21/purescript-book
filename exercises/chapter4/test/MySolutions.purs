@@ -3,10 +3,11 @@ module Test.MySolutions where
 import Prelude
 
 import Control.Alternative (guard)
-import Data.Array (head, tail, null, filter, length, (..), cons)
+import Data.Array (head, tail, null, filter, length, (..), cons, concatMap, (:))
 import Data.Foldable (foldl)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Main (factors)
+import Data.Path
 
 -- Note to reader: Add your solutions to this file
 isEven :: Int -> Boolean
@@ -81,3 +82,15 @@ fibTailRec = fib' 0 1
       a
     else
       fib' b (a + b) (n' - 1) 
+
+reverse :: forall a . Array a -> Array a
+reverse = foldl (flip cons) []
+
+isFile :: Path -> Boolean
+isFile (Directory _ _) = false
+isFile (File _ _) = true
+
+onlyFiles :: Path -> Array Path
+onlyFiles path = if isFile path
+    then [path]
+    else concatMap onlyFiles $ ls path

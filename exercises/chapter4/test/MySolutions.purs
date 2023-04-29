@@ -41,3 +41,9 @@ isPrime n = case n of
     0 -> false
     1 -> false 
     _ -> eq 1 $ length $ factors n
+
+cartesianProduct :: forall a . Array a -> Array a -> Array (Array a)
+cartesianProduct xs ys = do
+    x <- xs
+    y <- ys
+    pure [x, y]

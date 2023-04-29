@@ -4,6 +4,7 @@ import Prelude
 
 import Control.Alternative (guard)
 import Data.Array (head, tail, null, filter, length, (..), cons)
+import Data.Foldable (foldl)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Main (factors)
 
@@ -67,3 +68,6 @@ primeFactors n = case n of
             1 -> []
             _ | x `mod` d == 0 -> cons d $ devide d (x / d)
             _ -> devide (d + 1) x
+
+allTrue :: Array Boolean -> Boolean
+allTrue = foldl (&&) true

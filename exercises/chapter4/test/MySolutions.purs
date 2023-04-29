@@ -21,3 +21,6 @@ countEven :: Array Int -> Int
 countEven xs = if null xs
     then 0
     else (oneIfJustEven $ head xs) + (countEven $ fromMaybe [] $ tail xs)
+
+squared :: Array Number -> Array Number
+squared = map (\x -> x * x)

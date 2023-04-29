@@ -3,7 +3,7 @@ module Test.MySolutions where
 import Prelude
 
 import Control.Alternative (guard)
-import Data.Array (head, tail, null, filter, length, (..))
+import Data.Array (head, tail, null, filter, length, (..), cons)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Main (factors)
 
@@ -55,3 +55,15 @@ triples n = do
     z <- y .. n
     guard $ x * x + y * y == z * z
     pure [x, y, z]
+
+primeFactors :: Int -> Array Int
+primeFactors n = case n of
+    0 -> []
+    1 -> []
+    _ -> devide 2 n
+    where
+        devide :: Int -> Int -> Array Int
+        devide d x = case x of
+            1 -> []
+            _ | x `mod` d == 0 -> cons d $ devide d (x / d)
+            _ -> devide (d + 1) x

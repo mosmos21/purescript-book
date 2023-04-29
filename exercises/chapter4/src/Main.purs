@@ -43,3 +43,12 @@ lengthTailRec arr = length' arr 0
 
 reverse' :: forall a . Array a -> Array a
 reverse' = foldr (\x acc -> acc <> [x]) [] 
+
+fib :: Int -> Int
+fib n =
+  if n == 0 then
+    0
+  else if n == 1 then
+    1
+  else
+    fib (n - 1) + fib (n - 2)

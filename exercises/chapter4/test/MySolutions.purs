@@ -71,3 +71,13 @@ primeFactors n = case n of
 
 allTrue :: Array Boolean -> Boolean
 allTrue = foldl (&&) true
+
+fibTailRec :: Int -> Int
+fibTailRec = fib' 0 1
+  where
+  fib' :: Int -> Int -> Int -> Int
+  fib' a b n' =
+    if n' == 0 then
+      a
+    else
+      fib' b (a + b) (n' - 1) 

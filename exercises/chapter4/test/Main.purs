@@ -18,7 +18,7 @@ main :: Effect Unit
 main =
   runTest do
     runChapterExamples
-    {-  Move this block comment starting point to enable more tests
+    
     suite "Exercise Group - Recursion" do
       suite "Exercise - isEven" do
         test "0 is even" do
@@ -42,6 +42,7 @@ main =
         test "-19 is odd" do
           Assert.equal false
             $ isEven (-19)
+{-  Move this block comment starting point to enable more tests
       suite "Exercise - countEven" do
         test "[] has none" do
           Assert.equal 0

@@ -1,8 +1,11 @@
 module Test.MySolutions where
 
 import Prelude
-import Data.Array (head, tail, null, filter)
+
+import Control.Alternative (guard)
+import Data.Array (head, tail, null, filter, length)
 import Data.Maybe (Maybe(..), fromMaybe)
+import Main (factors)
 
 -- Note to reader: Add your solutions to this file
 isEven :: Int -> Boolean
@@ -32,3 +35,9 @@ infix 8 filter as <$?>
 
 keepNonNegativeRewrite :: Array Number -> Array Number
 keepNonNegativeRewrite arr = (\x -> x >= 0.0) <$?> arr
+
+isPrime :: Int -> Boolean
+isPrime n = case n of 
+    0 -> false
+    1 -> false 
+    _ -> eq 1 $ length $ factors n

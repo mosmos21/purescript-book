@@ -1,13 +1,15 @@
 module Test.MySolutions where
 
+import Data.Path
 import Prelude
 
 import Control.Alternative (guard)
 import Data.Array (head, tail, null, filter, length, (..), cons, concatMap, (:))
+import Data.Array.NonEmpty (findLastIndex)
 import Data.Foldable (foldl)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Main (factors)
-import Data.Path
+import Test.Examples (allFiles)
 
 -- Note to reader: Add your solutions to this file
 isEven :: Int -> Boolean
@@ -94,3 +96,10 @@ onlyFiles :: Path -> Array Path
 onlyFiles path = if isFile path
     then [path]
     else concatMap onlyFiles $ ls path
+
+whereIs :: Path -> String -> Maybe Path
+whereIs path name = head $ do
+    path' <- allFiles path
+    path'' <- ls path'
+    guard $ filename path'' == filename path' <> name
+    pure path'

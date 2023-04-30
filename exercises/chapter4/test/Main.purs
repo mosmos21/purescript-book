@@ -195,7 +195,6 @@ main =
           $ Assert.equal (Nothing)
           $ map filename
           $ whereIs root "cat"
-{-  Move this block comment starting point to enable more tests
       suite "Exercise - largestSmallest" do
         let
           testls :: String -> Array String -> Path -> TestSuite
@@ -212,7 +211,6 @@ main =
         testls "works for a directory with one file" ["/etc/hosts"] oneFileDir
         testls "works for an empty directory" [] emptyDir
 
--}
 runChapterExamples :: TestSuite
 runChapterExamples =
   suite "Chapter Examples" do

@@ -4,9 +4,7 @@ import Data.Path
 import Prelude
 
 import Control.Alternative (guard)
-import Data.Array (head, tail, null, filter, length, (..), cons, concatMap, (:))
-import Data.Array.NonEmpty (findLastIndex)
-import Data.Foldable (foldl)
+import Data.Array (concatMap, cons, filter, foldl, head, length, null, tail, (..))
 import Data.Maybe (Maybe(..), fromMaybe)
 import Main (factors)
 import Test.Examples (allFiles)
@@ -103,3 +101,14 @@ whereIs path name = head $ do
     path'' <- ls path'
     guard $ filename path'' == filename path' <> name
     pure path'
+
+largestSmallest :: Path -> Array Path
+largestSmallest path = foldl select [] $ onlyFiles path
+    where
+        select :: Array Path -> Path -> Array Path
+        select [file] current   | size current > size file = [current, file]
+                                | otherwise = [file, current]
+        select [largest, smallest] current  | size current < size largest = [current, smallest]
+                                            | size smallest < size current = [largest, current]
+                                            | otherwise = [largest, smallest]
+        select _ current = [current]

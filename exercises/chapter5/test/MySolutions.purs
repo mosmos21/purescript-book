@@ -1,8 +1,10 @@
 module Test.MySolutions where
 
-import Prelude
 import Data.Person
 import Data.Picture
+import Prelude
+
+import Data.Maybe (Maybe(..))
 
 factorial :: Int -> Int
 factorial 0 = 1
@@ -41,3 +43,7 @@ doubleScaleAndCenter (Line p1 p2) = Line { x: p1'.x * 2.0, y: p1'.y * 2.0 }  { x
       p1' = { x: p1.x - center.x, y: p1.y - center.y }
       p2' = { x: p2.x - center.x, y: p2.y - center.y }
 doubleScaleAndCenter (Text _ str) = Text { x: 0.0, y: 0.0 } str
+
+shapeText:: Shape -> Maybe String
+shapeText (Text _ str) = Just str
+shapeText _ = Nothing

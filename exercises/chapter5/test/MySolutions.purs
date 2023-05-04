@@ -30,4 +30,14 @@ circleAtOrigin :: Shape
 circleAtOrigin = Circle center 10.0
     where 
         center :: Point
-        center = { x: 0.0, y: 0.0}
+        center = { x: 0.0, y: 0.0 }
+
+doubleScaleAndCenter :: Shape -> Shape
+doubleScaleAndCenter (Circle _ r) = Circle { x: 0.0, y: 0.0 } (r * 2.0)
+doubleScaleAndCenter (Rectangle _ w h) = Rectangle { x: 0.0, y: 0.0 } (w * 2.0) (h * 2.0)
+doubleScaleAndCenter (Line p1 p2) = Line { x: p1'.x * 2.0, y: p1'.y * 2.0 }  { x: p2'.x * 2.0, y: p2'.y * 2.0 }
+    where
+      center = { x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0 }
+      p1' = { x: p1.x - center.x, y: p1.y - center.y }
+      p2' = { x: p2.x - center.x, y: p2.y - center.y }
+doubleScaleAndCenter (Text _ str) = Text { x: 0.0, y: 0.0 } str

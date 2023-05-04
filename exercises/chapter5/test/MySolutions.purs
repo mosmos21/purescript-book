@@ -2,6 +2,7 @@ module Test.MySolutions where
 
 import Prelude
 import Data.Person
+import Data.Picture
 
 factorial :: Int -> Int
 factorial 0 = 1
@@ -24,3 +25,9 @@ sameCity { address: { city: c1 } } { address: { city: c2 } } = c1 == c2
 fromSingleton :: forall a . a -> Array a -> a
 fromSingleton _ [x] = x
 fromSingleton d _ = d
+
+circleAtOrigin :: Shape
+circleAtOrigin = Circle center 10.0
+    where 
+        center :: Point
+        center = { x: 0.0, y: 0.0}
